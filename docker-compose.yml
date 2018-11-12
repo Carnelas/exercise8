@@ -1,6 +1,6 @@
 version: "3"
 services:
-  message:
+  message1:
     build: message/
     ports:
       - "9007:9007"
@@ -15,7 +15,6 @@ services:
       - mongodb_message
       - replica_message
       - redis
-
   message2:
     build: message/
     ports:
@@ -31,7 +30,6 @@ services:
       - mongodb_message
       - replica_message
       - redis
-
   message3:
     build: message/
     ports:
@@ -47,7 +45,6 @@ services:
       - mongodb_message
       - replica_message
       - redis
-
   credit:
     build: credit/
     ports:

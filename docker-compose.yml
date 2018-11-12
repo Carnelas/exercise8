@@ -61,6 +61,20 @@ services:
     image: cabify/backend-bootcamp-messageapp
     ports:
       - "3000:3000"
+  HAproxy:
+    image: haproxy:1.6
+    ports:
+      - "80:80"
+    links:
+      - message1
+      - message2
+      - message3
+    depends_on:
+      - message1
+      - message2
+      - message3
+    volumes:
+      - "./message:/etc/haproxy/haproxy.cfg"
 
   mongodb_credit:
     image: mongo

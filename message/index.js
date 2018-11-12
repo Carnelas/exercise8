@@ -1,7 +1,7 @@
 const http = require("http");
 const express = require("express");
-require('./src/controllers/addToQueue')
-const addToQueue = require('./src/controllers/addToQueue')
+require("./src/controllers/addToQueue");
+const addToQueue = require("./src/controllers/addToQueue");
 
 const bodyParser = require("body-parser");
 const {
@@ -11,7 +11,7 @@ const {
 
 const getMessages = require("./src/controllers/getMessages");
 const getOneMessage = require("./src/controllers/getOneMessage");
-
+const getStatus = require("./src/clients/getStatus");
 const app = express();
 
 const validator = new Validator({ allErrors: true });
@@ -45,6 +45,8 @@ app.post(
   addToQueue
 );
 
+app.get("/health", getStatus);
+
 app.get("/messages", getMessages);
 
 app.get("/messages/:id/status", getOneMessage);
@@ -61,4 +63,3 @@ app.use(function(err, req, res, next) {
 app.listen(9007, function() {
   console.log("App started on PORT 9007");
 });
-
